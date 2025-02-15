@@ -3,6 +3,8 @@
 ## Question
 請以任意語言/形式撰寫一段腳本，找出“words.txt” 檔案內容中重複次數最多的單字 （大小寫將忽略不計。舉例來說：the/The 將會被視為相同單字）
 
+## Answer
+
 ### Shell Script
 
 ```shell
