@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  namespace: asiayo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: web-app
+          image: my-dockerhub-user/web-app:latest  # 你需要替換這個鏡像
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              value: "mysql-router.asiayo.svc.cluster.local"
+            - name: DB_NAME
+              value: "mydb"
+            - name: DB_USER
+              value: "user"
+            - name: DB_PASSWORD
+              value: "password"
+          resources:
+            requests:
+              cpu: "100m"  # 最少 100m (0.1 核心)
+              memory: "128Mi"
+            limits:
+              cpu: "500m"  # 最大 500m (0.5 核心)
+              memory: "512Mi"
