@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-router
+  namespace: asiayo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mysql-router
+  template:
+    metadata:
+      labels:
+        app: mysql-router
+    spec:
+      containers:
+        - name: mysql-router
+          image: mysql-router:8.0
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROUTER_USER
+              value: "router"
+            - name: MYSQL_ROUTER_PASSWORD
+              value: "routerpassword"
