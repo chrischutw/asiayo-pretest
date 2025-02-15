@@ -12,7 +12,7 @@
 
 ## Answer
 
-### 說明
+### Terraform 說明
 
 - Terraform 結構
 terraform/
@@ -36,3 +36,16 @@ terraform/
 ```shell
 terraform fmt -recursive
 ```
+
+### Kubernetes 說明
+
+#### mysql
+
+- 暫時跳過 mysql.cnf 設定
+- 機敏性資料也暫時不處理
+- 參考此[文章](https://cloud.google.com/kubernetes-engine/docs/tutorials/stateful-workloads/mysql#router)的作法，採用 mysql router 達到讀寫分離
+
+#### app
+
+- 隨便產生個 web app，讓他可以從 ingress 收到流量，並且可以連到 DB
+- 透過 HPA 的方式達成高可用
